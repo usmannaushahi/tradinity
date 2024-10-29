@@ -11,6 +11,7 @@ A Flutter application that displays a list of trading instruments along with a r
 - web_socket_channel for socket connection
 - connectivity_plus for network handling
 - flutter_dotenv to load configuration file 
+- Mockito, bloc_test and test for testing
 
 
 ## Project Structure

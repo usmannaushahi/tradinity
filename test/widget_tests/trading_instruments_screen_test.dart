@@ -12,9 +12,8 @@ void main() {
   group('TradingInstrumentsScreen', () {
     late TradingCubit tradingCubit;
 
-    setUp(() async{
+    setUp(() async {
       sl.reset();
-      // Initialize DI
       await initDI();
       tradingCubit = TradingCubit(); // Initialize your TradingCubit here
     });
@@ -22,6 +21,7 @@ void main() {
     tearDown(() {
       sl.reset(); // Reset after each test to avoid conflicts
     });
+
     testWidgets('displays loading indicator when state is PriceLoading',
         (WidgetTester tester) async {
       // Arrange
@@ -36,6 +36,9 @@ void main() {
           ),
         ),
       );
+
+      // Allow for the loading state to settle
+      await tester.pumpAndSettle();
 
       // Assert
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
@@ -55,6 +58,9 @@ void main() {
           ),
         ),
       );
+
+      // Allow for the error state to settle
+      await tester.pumpAndSettle();
 
       // Assert
       expect(find.text('An error occurred'), findsOneWidget);
@@ -82,6 +88,9 @@ void main() {
         ),
       );
 
+      // Allow for the instruments list to settle
+      await tester.pumpAndSettle();
+
       // Assert
       expect(find.byType(InstrumentTile), findsNWidgets(prices.length));
       expect(find.text('AAPL'), findsOneWidget);
@@ -91,7 +100,7 @@ void main() {
     testWidgets('displays unexpected state message when state is unknown',
         (WidgetTester tester) async {
       // Arrange
-      // tradingCubit.emit(UnknownState());
+      // tradingCubit.emit(UnknownState()); // Emit an UnknownState here
 
       // Act
       await tester.pumpWidget(
@@ -102,6 +111,9 @@ void main() {
           ),
         ),
       );
+
+      // Allow for the unexpected state to settle
+      await tester.pumpAndSettle();
 
       // Assert
       expect(find.text('Unexpected state.'), findsOneWidget);
