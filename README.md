@@ -14,7 +14,7 @@ A Flutter application that displays a list of trading instruments along with a r
 
 
 ## Project Structure
-
+```
 core/
 ├── di/
 │   ├── domain_container.dart
@@ -53,7 +53,7 @@ features/
 │   └── instruments_list.dart
 └── trading_instruments_screen.dart
 main.dart
-
+```
                 
 
 # Tradinity Application Tests
@@ -61,7 +61,7 @@ main.dart
 This repository contains unit tests for the Trading Application, which implements a Flutter app using the BLoC (Business Logic Component) pattern. The tests are organized by feature and include tests for the cubits, repositories, and data sources.
 
 ## Folder Structure for Tests
-
+```
 test
 │
 ├── cubit
@@ -73,7 +73,7 @@ test
 │
 └── repo
 └── trading_instruments_repo_test.dart   
-
+```
 
 ## Testing Overview
 
